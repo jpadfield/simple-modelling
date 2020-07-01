@@ -18,7 +18,7 @@
   </head>
 
   <body onload="onLoad();">
-		<div class="container">
+		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
 				style="" alt="The National Gallery"/>
 		  </a>
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault"><ul class="navbar-nav">
-<li class="nav-item "><a class="nav-link" href="index.html">Home</a></li><!-- Dropdown Loop 1 --><li class="nav-item dropdown active"><a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" title="Click to open the CIDOC Models menu" >CIDOC Models<span class="sr-only">(current)</span></a><ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow"><li><a href="CIDOC%20Models.html" class="dropdown-item top-item" title="Click to open the CIDOC Models page">CIDOC Models</a></li><li class="dropdown-divider"></li><li><a href="Objects,%20Creators%20and%20Events.html" class="dropdown-item">Objects, Creators and Events</a></li><li><a href="Taking%20Samples.html" class="dropdown-item">Taking Samples</a></li><li><a href="Image%20Examinations.html" class="dropdown-item">Image Examinations</a></li><li><a href="Areas%20of%20Interest.html" class="dropdown-item">Areas of Interest</a></li><li><a href="Measurements%20and%20Analysis.html" class="dropdown-item">Measurements and Analysis</a></li><li><a href="Full%20knowledge%20graph.html" class="dropdown-item">Full knowledge graph</a></li></ul></li><!-- End Loop 1 --><!-- Dropdown Loop 1 --><li class="nav-item dropdown "><a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" title="Click to open the Linked Art Models menu" >Linked Art Models</a><ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow"><li><a href="Linked%20Art%20Models.html" class="dropdown-item top-item" title="Click to open the Linked Art Models page">Linked Art Models</a></li><li class="dropdown-divider"></li><li><a href="Test%20Models.html" class="dropdown-item">Test Models</a></li></ul></li><!-- End Loop 1 --><li class="nav-item "><a class="nav-link" href="data.html">Data</a></li><li class="nav-item "><a class="nav-link" href="about.html">About</a></li></ul></div>
+<li class="nav-item "><a class="nav-link" href="index.html">Home</a></li><li class="nav-item "><a class="nav-link" href="Instructions.html">Instructions</a></li><li class="nav-item "><a class="nav-link" href="Simple%20Example.html">Simple Example</a></li><li class="nav-item "><a class="nav-link" href="Simple%20CIDOC%20Examples.html">Simple CIDOC Examples</a></li><li class="nav-item active"><a class="nav-link" href="Simple%20Linked%20Art%20Examples.html">Simple Linked Art Examples<span class="sr-only">(current)</span></a></li><li class="nav-item "><a class="nav-link" href="Complex%20Example.html">Complex Example</a></li><li class="nav-item "><a class="nav-link" href="about.html">About</a></li></ul></div>
 			
     <span class="navbar-text">
       			<a href="https://github.com/jpadfield/cidoc-crm.examples/">
@@ -40,7 +40,35 @@
 			<div class="row ">				
 			 <div class="col-12 col-md-12">          
 				
-				<div class="jumbotron"><h2>National Gallery - CIDOC CRM Modelling Examples</h2></div><div class="row"><div class="col-12 col-lg-12"></div><!--/span--></div><!--/row-->    <div class="row"><div class="col-12 col-lg-12"><b>This presentation does not cover all the possible relationships relating to conservation documentation but concentrates on examples of the main properties and values required to document and organise technical and analytical examinations of cultural heritage objects.</b> Therefore, the semantic description of objects, their creators and common events will be minimal and will not explore the additional concepts more specifically related to detailed conservation treatments, art history, provenance or exhibitions. However, in addition to the demonstrating the semantic relationships between data types the examples included in this document have been extended to demonstrate how real literal values, numbers, dates, names and text can be connected to the semantic model. The data included in this presentation has been taken from the online <a href="https://cima.ng-london.org.uk/documentation">Raphael Research Resource</a>.</p><p>In the following examples each of the sets of relationships are presented in the form of a flow diagram, which indicates and explains the entities being linked together and the properties connecting them. At this time each flow diagram can be rendered in two different ways: one using an interactive 3D display (<a href="https://github.com/nylen/d3-process-map">D3 Process Map</a>) and one using a simpler 2D presentation (<a href="https://github.com/mermaid-js/mermaid">Mermaid</a>).<div class="foonote"><ul></ul></div></div><!--/span--></div><!--/row-->    <br/>
+				<div class="jumbotron"><h2>Simple Test Examples</h2></div><div class="row"><div class="col-12 col-lg-12"></div><!--/span--></div><!--/row-->    <div class="row"><div class="col-12 col-lg-12"><p>This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.</p><div class="col-12 col-lg-12"><table width="100%"><tbody>      <tr>
+				<td><p style="margin-bottom: 0px; font-size:1.25rem; font-weight:500;">Test modelling example (35 - triples)</p></td>
+				<td style="text-align:right;white-space: nowrap;">
+					<div class="btn-group" role="group" aria-label="Basic example">
+					<a class="btn btn-outline-primary" href="models/d3_test.html" role="button">D3 Model</a>
+					<a class="btn btn-outline-success" href="models/mermaid_test.html" role="button">Mermaid Model</a>
+          </div
+        </td>
+      </tr></tbody></table><br></div><div class="foonote"><ul></ul></div></div><!--/span--></div><!--/row-->    <div class="row"><div class="col-12 col-lg-12">	<br/<br/>
+	<h3>The original data files used</h3>
+	<figure>
+		<pre style="overflow-y: auto;overflow-x: hidden; border: 2px solid black;padding: 10px;max-height:400px;"><code>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br></code></pre>
+		<figcaption class=\"figure-caption\">The complete JSON object used to define this content and layout of this page.</figcaption>
+	</figure>	<br/<br/>
+	<h3>Page JSON Object</h3>
+	<figure>
+		<pre style="overflow-y: auto;overflow-x: hidden; border: 2px solid black;padding: 10px;max-height:400px;"><code>{
+    &quot;parent&quot;: &quot;&quot;,
+    &quot;class&quot;: &quot;modelling&quot;,
+    &quot;file&quot;: [
+        &quot;test&quot;
+    ],
+    &quot;title&quot;: &quot;Simple Test Examples&quot;,
+    &quot;content&quot;: &quot;&lt;p&gt;This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.&lt;/p&gt;&quot;,
+    &quot;content right&quot;: &quot;&quot;,
+    &quot;displaycode&quot;: true
+}</code></pre>
+		<figcaption class=\"figure-caption\">The complete JSON object used to define this content and layout of this page.</figcaption>
+	</figure></div><!--/span--></div><!--/row-->    <br/>
 			</div><!--/span-->
 			
 			

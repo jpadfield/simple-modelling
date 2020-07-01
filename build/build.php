@@ -593,6 +593,7 @@ END;
     <meta name="description" content="$pageDetails[metaDescription]" />
 		<meta name="keywords" content="$pageDetails[metaKeywords]" />
     <meta name="author" content="$pageDetails[metaAuthor]" />
+    <meta name="image" content="$pageDetails[metaImage]" />
     <link rel="icon" href="$pageDetails[metaFavIcon]">
     <title>$pageDetails[metaTitle]</title>
     $cssScripts

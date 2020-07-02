@@ -47,7 +47,7 @@ else
 // Variable used to add additional code at the bottom of a page -
 // the main purpose of this is to append the json code when the
 // system is used to present demo pages.
-$extraHTML = "";
+$extraHTML = "<hr>";
 	
 $pnames = array();	
 $pages = getRemoteJsonDetails("pages.json", false, true);
@@ -666,7 +666,7 @@ function displayCode ($array, $title=false, $format="json", $caption=false)
 	else
 		{$code = "";
 		 foreach($array as $value){
-     $code .= $value . "<br>";}}
+     $code .= trim($value) . "<br>";}}
 
   if ($title)
 		{$title = "<h3>$title</h3>";}
@@ -676,7 +676,7 @@ function displayCode ($array, $title=false, $format="json", $caption=false)
     
 	ob_start();			
 	echo <<<END
-	<br/<br/>
+	<hr/>
 	$title
 	<figure>
 		<pre style="overflow-y: auto;overflow-x: hidden; border: 2px solid black;padding: 10px;max-height:400px;"><code>${code}</code></pre>

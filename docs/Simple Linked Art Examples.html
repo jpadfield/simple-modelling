@@ -29,7 +29,7 @@
 				style="" alt="The National Gallery"/>
 		  </a>
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault"><ul class="navbar-nav">
-<li class="nav-item "><a class="nav-link" href="index.html">Home</a></li><li class="nav-item "><a class="nav-link" href="Instructions.html">Instructions</a></li><li class="nav-item "><a class="nav-link" href="Simple%20Example.html">Simple Example</a></li><li class="nav-item "><a class="nav-link" href="Simple%20CIDOC%20Examples.html">Simple CIDOC Examples</a></li><li class="nav-item active"><a class="nav-link" href="Simple%20Linked%20Art%20Examples.html">Simple Linked Art Examples<span class="sr-only">(current)</span></a></li><li class="nav-item "><a class="nav-link" href="Complex%20Example.html">Complex Example</a></li><li class="nav-item "><a class="nav-link" href="about.html">About</a></li></ul></div>
+<li class="nav-item "><a class="nav-link" href="index.html">Home</a></li><li class="nav-item "><a class="nav-link" href="Instructions.html">Instructions</a></li><li class="nav-item "><a class="nav-link" href="Simple%20Example.html">Simple Example</a></li><li class="nav-item "><a class="nav-link" href="Simple%20CIDOC%20Examples.html">Simple CIDOC Examples</a></li><li class="nav-item active"><a class="nav-link" href="Simple%20Linked%20Art%20Examples.html">Simple Linked Art Examples<span class="sr-only">(current)</span></a></li></ul></div>
 			
     <span class="navbar-text">
       			<a href="https://github.com/jpadfield/simple-modelling/">
@@ -41,29 +41,30 @@
 			<div class="row ">				
 			 <div class="col-12 col-md-12">          
 				
-				<div class="jumbotron"><h2>Simple Test Examples</h2></div><div class="row"><div class="col-12 col-lg-12"></div><!--/span--></div><!--/row-->    <div class="row"><div class="col-12 col-lg-12"><p>This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.</p><div class="col-12 col-lg-12"><table width="100%"><tbody>      <tr>
-				<td><p style="margin-bottom: 0px; font-size:1.25rem; font-weight:500;">Test modelling example (35 - triples)</p></td>
+				<div class="jumbotron"><h2>Simple Linked Art Example</h2></div><div class="row"><div class="col-12 col-lg-12"></div><!--/span--></div><!--/row-->    <div class="row"><div class="col-12 col-lg-12"><p>This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.</p><div class="col-12 col-lg-12"><table width="100%"><tbody>      <tr>
+				<td><p style="margin-bottom: 0px; font-size:1.25rem; font-weight:500;"> Test modelling example (35 - triples)</p></td>
 				<td style="text-align:right;white-space: nowrap;">
 					<div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn btn-outline-primary" href="models/d3_test.html" role="button">D3 Model</a>
-					<a class="btn btn-outline-success" href="models/mermaid_test.html" role="button">Mermaid Model</a>
+					<a class="btn btn-outline-primary" href="models/d3_la1.html" role="button">D3 Model</a>
+					<a class="btn btn-outline-success" href="models/mermaid_la1.html" role="button">Mermaid Model</a>
           </div
         </td>
-      </tr></tbody></table><br></div><div class="foonote"><ul></ul></div></div><!--/span--></div><!--/row-->    <div class="row"><div class="col-12 col-lg-12">	<br/<br/>
-	<h3>The original data files used</h3>
+      </tr></tbody></table><br></div><div class="foonote"><ul></ul></div></div><!--/span--></div><!--/row-->    <div class="row"><div class="col-12 col-lg-12">	<hr/>
+	<h3>The original "la1-triples
+" file used</h3>
 	<figure>
-		<pre style="overflow-y: auto;overflow-x: hidden; border: 2px solid black;padding: 10px;max-height:400px;"><code>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br>Array<br></code></pre>
-		<figcaption class=\"figure-caption\">The complete JSON object used to define this content and layout of this page.</figcaption>
-	</figure>	<br/<br/>
+		<pre style="overflow-y: auto;overflow-x: hidden; border: 2px solid black;padding: 10px;max-height:400px;"><code>////////////////////////////////////////////////////////////////////////<br>// Model: test // Test modelling example<br>// Stuff<br>////////////////////////////////////////////////////////////////////////<br><br>HMO	identified_by	Name<br>Name	content	Portret van Katherine Stieglitz<br>Name	classified_as	object title<br>Name	language	English<br>HMO	identified_by	Identifier<br>Identifier	content	RP-F-F17653<br>Identifier	classified_as	accession<br>Identifier	assigned_by	Attrib Assign<br>Attrib Assign	carried_out_by	Rijks<br>HMO	classified_as	photograph<br>back	part_of	HMO<br>back	carries	Name<br>HMO	produced_by	Production<br>Production	carried_out_by	Annan<br>Production	technique Printing<br>HMO	shows	Visual Item<br>Visual Item	content	Name<br>Visual Item	????	Creation<br>Creation	timespan	Timespan<br>Creation	carried_out_by	Stieglitz<br>Timespan	identifed_by	Name2<br>Timespan	begin_of_the_begin	1905-01-01T00:00:00<br>Timespan	end_of_the_end	1906-01-01T00:00:00<br>Name2	content	1905<br>Name2	classified_as	display name<br>HMO	made_of	Paper<br>HMO	dimension	DimensionH<br>DimensionH	value	302<br>DimensionH	unit	mm<br>DimensionH	type	height<br>HMO	dimension	DimensionW<br>DimensionW	value	210<br>DimensionW	unit	mm<br>DimensionW	type	width<br>Image Part	part_of	HMO<br>Image Part	dimension	DimensionX<br></code></pre>
+		<figcaption class=\"figure-caption\">The complete text details used to define one of the included models.</figcaption>
+	</figure>	<hr/>
 	<h3>Page JSON Object</h3>
 	<figure>
 		<pre style="overflow-y: auto;overflow-x: hidden; border: 2px solid black;padding: 10px;max-height:400px;"><code>{
     &quot;parent&quot;: &quot;&quot;,
     &quot;class&quot;: &quot;modelling&quot;,
     &quot;file&quot;: [
-        &quot;test&quot;
+        &quot;la1&quot;
     ],
-    &quot;title&quot;: &quot;Simple Test Examples&quot;,
+    &quot;title&quot;: &quot;Simple Linked Art Example&quot;,
     &quot;content&quot;: &quot;&lt;p&gt;This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.&lt;/p&gt;&quot;,
     &quot;content right&quot;: &quot;&quot;,
     &quot;displaycode&quot;: true

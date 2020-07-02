@@ -15,248 +15,194 @@ foreach ($old_files as $ofile)
 if (is_file('../d3/common.php'))
   {require_once '../d3/common.php';}
 else
-  {require_once '../../../d3-process-map/common.php';}
+  {require_once '../../d3-process-map/common.php';}
 
 function extensionModelling ($d, $pd)
   {
   global $raw, $extraHTML, $html_path, $config, $dataset, $dataset_qs, $data;
   
-  $files = array();
+  $files = array();  
+  $codecaption = "The complete text details used to define one of the included models.";
   foreach ($d["file"] as $t)
     {$files = array_merge($files, glob("../models/*/${t}-triples.csv"));}
 
-  $input = array();
+  $inputs = array();
 
   foreach ($files as $f)
-    {$input = array_merge($input, file($f));}
+    {
+    $fname = basename($f, ".csv").PHP_EOL;
+    if(preg_match("/^(.+)-triples$/", $fname, $m))
+      {$tag = $m[1];}
+    else
+      {$tag = $f;}
+      
+    $fcontent = file($f);
+    $codetitle = "The original \"$fname\" file used";
+    if (isset($d["displaycode"]))
+      {$extraHTML .= displayCode ($fcontent, $codetitle, "txt", $codecaption);
+       $codetitle = false;}
+    $inputs[$tag] = $fcontent;
+    }
 
   $errors = array();	
-
-  $raw = getRaw($input);
-  
+  $raw = getRaw($inputs);
   $gcontent = modelLinks ($d["file"]);
-
-  if (isset($d["displaycode"]))
-    {$extraHTML .= displayCode ($data, "The original data files used", "txt",$codecaption);}
-        
+  
   $d["content"] = positionExtraContent ($d["content"], $gcontent);
   
-	$codeHTML = "";
-	$codecaption = "The complete modelling files used to define the models created in this example.";
+  $codeHTML = "";
+  $codecaption = "The complete modelling files used to define the models created in this example.";
 
   foreach ($raw as $name => $selected)
-		{		
-		$pd["fluid"] = true;
+    {		
+    $pd["fluid"] = true;   
     
     $def = Mermaid_formatData ($selected);
-		$html = Mermaid_displayModel($def, false, $pd["page"]);
+    $html = Mermaid_displayModel($def, false, $pd["page"]);
 			
-		$myfile = fopen($html_path."models/mermaid_${name}.html", "w");
-		fwrite($myfile, $html);
-		fclose($myfile);			
+    $myfile = fopen($html_path."models/mermaid_${name}.html", "w");
+    fwrite($myfile, $html);
+    fclose($myfile);			
 		
-		$D3_data = D3_formatData($selected);
-		
-		//$loc = $html_path."data";
-		$loc = "data";
-		
-		if (!is_dir($loc."/${name}"))
-			{mkdir($loc."/${name}");}
-				
-		if (!is_file($loc."/${name}/config.json")) {
-			copy($loc."/config.json", $loc."/${name}/config.json");
-			}
-			
-		$myfile = fopen($loc."/${name}/objects.json", "w");
-		fwrite($myfile, "[\n");
-		$ja = array();
-		foreach ($D3_data as $nm => $a)
-			{$ja[] = json_encode($a);}
-		fwrite($myfile, implode(",\n", $ja));
-		fwrite($myfile, "]");		
-		fclose($myfile);
-		
-		$dataset = $name;
-		$dataset_qs = "?dataset=$dataset";
+    $D3_data = D3_formatData($selected);
 
-		read_config(); //defines the content of the global variable $config
+    $loc = "data";
+		
+    if (!is_dir($loc."/${name}")) {
+      mkdir($loc."/${name}");}
+				
+    if (!is_file($loc."/${name}/config.json")) {
+      copy($loc."/config.json", $loc."/${name}/config.json");}
+			
+    $myfile = fopen($loc."/${name}/objects.json", "w");
+    fwrite($myfile, "[\n");
+    $ja = array();
+    foreach ($D3_data as $nm => $a)
+      {$ja[] = json_encode($a);}
+
+    fwrite($myfile, implode(",\n", $ja));
+    fwrite($myfile, "]");		
+    fclose($myfile);
+		
+    $dataset = $name;
+    $dataset_qs = "?dataset=$dataset";
+
+    read_config(); //defines the content of the global variable $config
     $config['jsonUrl'] = "d3_${name}.json";
-		$json = json_encode($config);
-		$html = D3_displayModel ($title, $dataset, $json, $pd["page"]);
-		$myfile = fopen($html_path."models/d3_${name}.html", "w");
-		fwrite($myfile, $html);
-		fclose($myfile);
+    $json = json_encode($config);
+    $html = D3_displayModel ($title, $dataset, $json, $pd["page"]);
+    $myfile = fopen($html_path."models/d3_${name}.html", "w");
+    fwrite($myfile, $html);
+    fclose($myfile);
 				
-		read_data(); //defines the content of the global variable $data
-		$d3json = json_encode(array(
-			'data'   => $data,
-			'errors' => $errors));
+    read_data(); //defines the content of the global variable $data
+    $d3json = json_encode(array(
+      'data'   => $data,
+      'errors' => $errors));
 	
-		$myfile = fopen($html_path."models/d3_${name}.json", "w");
-		fwrite($myfile, $d3json);
-		fclose($myfile);
+    $myfile = fopen($html_path."models/d3_${name}.json", "w");
+    fwrite($myfile, $d3json);
+    fclose($myfile);
 				
-		$html = D3_displayList ($title, $dataset, $data);
-		$myfile = fopen($html_path."models/d3_${name}_list.html", "w");
-		fwrite($myfile, $html);
-		fclose($myfile);
-		}	
-	
-	//foreach ($groups as $name => $d)
-	//	{$pd = $gpd;		
-	//	 $pd["topNavbar"] = buildTopNav ("models");
-	//	 $pd["grid"] = grouppage ($d);
-	//	 $pd["body"] = buildSimpleBSGrid ($pd["grid"]);
-	//	 $html = buildBootStrapNGPage ($pd);
-	//	 $myfile = fopen($html_path."${name}.html", "w");
-	//	 fwrite($myfile, $html);
-	//	 fclose($myfile);}
-
-	/*foreach ($pages as $name => $d)
-		{
-		$pd = $gpd;		
-		
-		if ($name == "home") {$use= "index";}
-		else {$use = $name;}
-		
-		$pd["topNavbar"] = buildTopNav ($name);
-		$home = parseFootNotes ($d["content"], $d["footnotes"], 1);
-				
-		$pd["grid"] = array(
-			"topjumbotron" => "<h2>$d[title]</h2>",
-			"bottomjumbotron" => "",
-			"rows" => array(
-				array(
-					array (
-						"class" => "col-12 col-lg-12",
-						"content" => $home)
-					)));
-							
-		if ($d["content right"])
-			{$pd["grid"]["rows"][0][0]["class"] = "col-6 col-lg-6";
-			 $pd["grid"]["rows"][0][1] = 
-					array (
-						"class" => "col-6 col-lg-6",
-						"content" => $d["content right"]);}
-						
-		if ($name == "models")
-			{
-			$crows = "";
-			
-			foreach ($groups as $g => $a)
-				{
-				ob_start();			
-				echo <<<END
-				<tr>
-					<td style="text-align:right;">
-						<a class="btn btn-outline-dark btn-block" href="${g}.html" role="button">$a[title]</a>
-					</td>
-				</tr>
-END;
-				$crows .= ob_get_contents();
-				ob_end_clean(); // Don't send output to client			
-				}
-			
-			$pd["grid"]["rows"][] = array(array (
-				"class" => "col-12 col-lg-12",	
-				"content" => '<table width="100%">'.$crows.'</table></br>'));						
-			}
-						
-		$pd["body"] = buildSimpleBSGrid ($pd["grid"]);
-		$html = buildBootStrapNGPage ($pd);
-		$myfile = fopen($html_path."${use}.html", "w");
-		fwrite($myfile, $html);
-		fclose($myfile);
-		}*/
+    $html = D3_displayList ($title, $dataset, $data);
+    $myfile = fopen($html_path."models/d3_${name}_list.html", "w");
+    fwrite($myfile, $html);
+    fclose($myfile);
+    }	
 
   return (array("d" => $d, "pd" => $pd));
   }
 
 function getRaw($data)
-	{	
-	$model = array();//"all", "The full presentation of all of the data presented");
-	$output = array();
-	//$output[$model[0]]["model"] = $model[0];
-	//$output[$model[0]]["comment"] = $model[1];	
-	//$output[$model[0]]["count"] = 0;	
+  {	
+  $output = array();
 	
-	$no = 0;
-	$bn = 0;
-	$tn = 0;
-	$ono = 0;
-	$bnew = false;
-	$bba = array();
-	$bbano = 1;
+  $no = 0;
+  $bn = 0;
+  $tn = 0;
+  $ono = 0;
+  $bnew = false;
+  $bba = array();
+  $bbano = 1;
+ 
+  foreach ($data as $tag => $arr) 
+    {
+    $output[$tag]["model"] = $tag;
+    $output[$tag]["comment"] = ucfirst ($tag)." Model";
+    $output[$tag]["count"] = 0;
 
-	foreach ($data as $k => $line) 
-		{	
-		$trip = explode ("\t", $line);
-		$trip = array_map('trim', $trip);
-		// Increment triple number
-		$tn++;
+    foreach ($arr as $k => $line) 
+      {
+      if (preg_match("/^.+\t.+\t.+$/", $line, $m))
+	{$trip = explode ("\t", $line);}
+      else if (preg_match("/^.+[,].+[,].+$/", $line, $m))
+	{$trip = explode (",", $line);}
+      else
+	{$trip = array($line);}
+      
+      $trip = array_map('trim', $trip);
+
+      // Increment triple number
+      $tn++;
 	
-		if(preg_match("/^[\/][\/][ ]Model[:][\s]*([a-zA-Z0-9 ]+)[\s]*[\/][\/](.+)$/", $line, $m))
-			{$model = array(trim($m[1]), trim($m[2]));
-			 $output[$model[0]]["model"] = $model[0];
-			 $output[$model[0]]["comment"] = $model[1];
-			 $output[$model[0]]["count"] = 0;}
+      if(preg_match("/^[\/][\/][ ]Model[:][\s]*([a-zA-Z0-9 ]+)[\s]*[\/][\/](.+)$/", $line, $m))
+	{$output[$tag]["comment"] = $m[2];}
 		
-		if (isset($trip[2])) { // Ignore comments and empty lines
+      if (isset($trip[2]))
+	{
+	// Ignore comments and empty lines
+
+	//All Blank Nodes need to be numbered to be unique
+	if ($trip[0] == "_Blank Node" and $trip[1] == "crm:P2.has type" and !$bnew)
+	  {$bn++;
+	   $bnew=true;}
 		
-			// All Blank Nodes need to be numbered to be unique
-			if ($trip[0] == "_Blank Node" and $trip[1] == "crm:P2.has type" and !$bnew)
-				{$bn++;
-				 $bnew=true;}
-			
-			// Ensure subsequent Blank Nodes are seen as new. 
-			if ($trip[1] == "crm:P2.has type" AND $trip[0] != "_Blank Node")
-				{$bnew=false;}
+	// Ensure subsequent Blank Nodes are seen as new. 
+	if ($trip[1] == "crm:P2.has type" AND $trip[0] != "_Blank Node")
+	  {$bnew=false;}
 								
-			if ($trip[0] == "_Blank Node")
-				{$trip[0] = "_Blank Node-N".$bn;}
-			else if (preg_match("/^_Blank Node[-]([0-9]+)$/", $trip[0], $m))
-				{$trip[0] = "_Blank Node-N".($bn-$m[1]);}
+	if ($trip[0] == "_Blank Node")
+	  {$trip[0] = "_Blank Node-N".$bn;}
+	else if (preg_match("/^_Blank Node[-]([0-9]+)$/", $trip[0], $m))
+	  {$trip[0] = "_Blank Node-N".($bn-$m[1]);}
 				
-			// Current process is assuming that the subject and the object can not both be Blank Nodes
-			if ($trip[2] == "_Blank Node")
-				{$trip[2] = "_Blank Node-N".$bn;
-				 $bnew=false;}
-			else if (preg_match("/^_Blank Node[-]([0-9]+)$/", $trip[2], $m))
-				{$trip[2] = "_Blank Node-N".($bn-$m[1]);}
+	// Current process is assuming that the subject and the object can not both be Blank Nodes
+	if ($trip[2] == "_Blank Node")
+	  {$trip[2] = "_Blank Node-N".$bn;
+	   $bnew=false;}
+	else if (preg_match("/^_Blank Node[-]([0-9]+)$/", $trip[2], $m))
+	  {$trip[2] = "_Blank Node-N".($bn-$m[1]);}
 										
-			$trip[1] = $trip[1]."-N".$tn;
+	$trip[1] = $trip[1]."-N".$tn;
 			
-			//$output["all"]["triples"][] = $trip;
-			//$output["all"]["count"]++;
-			$output[$model[0]]["triples"][] = $trip;
-			$output[$model[0]]["count"]++;
-		}
-	else //Empty lines will force a new Blank node to be considered
-		{$bnew=false;}
-			
-	if ($trip[0] == "// Stop")
-		{break;}
-	}	
-
-	// Move "all" to the end of the list
-	//$output["all"] = array_shift($output);
-	return ($output);
+	$output[$tag]["triples"][] = $trip;
+	$output[$tag]["count"]++;
 	}
+      else //Empty lines will force a new Blank node to be considered
+	{$bnew=false;}
+			
+      if ($trip[0] == "// Stop") // For debugging
+	{break;}
+      }
+    }	
+
+  return ($output);
+  }
 
 function modelLinks ($mods)
-	{
-	global $raw;
+  {
+  global $raw;
 
   ob_start();
 
   echo "<div class=\"col-12 col-lg-12\"><table width=\"100%\"><tbody>";
 		
-	foreach ($mods as $nm)// => $a)
-		{
-		$count = $raw[$nm]["count"];
-		$tag = $raw[$nm]["comment"];
+  foreach ($mods as $nm)// => $a)
+    {
+    $count = $raw[$nm]["count"];
+    $tag = $raw[$nm]["comment"];
 			
-		echo <<<END
+    echo <<<END
       <tr>
 				<td><p style="margin-bottom: 0px; font-size:1.25rem; font-weight:500;">$tag ($count - triples)</p></td>
 				<td style="text-align:right;white-space: nowrap;">
@@ -274,58 +220,13 @@ END;
   $html = ob_get_contents();
   ob_end_clean(); // Don't send output to client
         
-	return ($html);
-	}
+  return ($html);
+  }
   
-
-function OLDgrouppage ($gds)//title, $comment, $group)
-	{
-	global $raw;
-	
-	$rows = array( 0 => 
-			array (
-				"class" => "col-12 col-lg-12",
-				"content" => $gds["comment"]));
-
-		$crows = "";
-		
-		foreach ($gds["models"] as $nm)// => $a)
-			{
-			$count = $raw[$nm]["count"];
-			$tag = $raw[$nm]["comment"];
-			
-			ob_start();			
-			echo <<<END
-				<tr>
-					<td><h4>$tag ($count - triples)</h4></td>
-					<td style="text-align:right;white-space: nowrap;">
-						<div class="btn-group" role="group" aria-label="Basic example">
-						<a class="btn btn-outline-primary" href="models/d3_${nm}.html" role="button">D3 Model</a>
-						<a class="btn btn-outline-success" href="models/mermaid_${nm}.html" role="button">Mermaid Model</a>
-						</div
-					</td>
-				</tr>
-END;
-			$crows .= ob_get_contents();
-			ob_end_clean(); // Don't send output to client			
-			}	
-			
-		$rows[] = array (
-				"class" => "col-12 col-lg-12",	
-				"content" => '<table width="100%">'.$crows.'</table></br>');
-					
-		$grid = array(
-			"topjumbotron" => "<h2>$gds[title]</h2>",
-			"bottomjumbotron" => "",//<h1>Goodbye, world!</h1> <p>We hoped you liked this great page.</p>",
-			"rows" => array($rows));
-			
-	return ($grid);
-	}
-	
 function Mermaid_formatData ($selected)
-	{
-	ob_start();
-	echo <<<END
+  {
+  ob_start();
+  echo <<<END
 
 graph LR
 
@@ -343,56 +244,74 @@ classDef url stroke:#2C5D98,fill:white,color:#2C5D98,rx:5px,ry:5px;
 classDef note stroke:#2C5D98,fill:#D8FDFF,color:#2C5D98,rx:5px,ry:5px;
 
 END;
-	$defTop = ob_get_contents();
-	ob_end_clean(); // Don't send output to client	
+  $defTop = ob_get_contents();
+  ob_end_clean(); // Don't send output to client	
 
-	$defs = "";
-	//$defs .= "<h1>".$selected["comment"]."</h1>";
-	$defs .= "<div class=\"mermaid\">".$defTop;
-	
-	$things = array();
-	$no = 0;
-	$crm = 0;
+  $defs = "";
+  $defs .= "<div class=\"mermaid\">".$defTop;
+
+  $things = array();
+  $no = 0;
+  $crm = 0;
+  $objs = array();
+  
+  foreach ($selected["triples"] as $k => $t) 
+    {
+    // Ensure that all refs to crm classes are unique so the diagram
+    // does not Overlap too much
+    if(preg_match("/^(crm:E.+)$/", $t[2], $m))
+      {$selected["triples"][$k][2] = $t[2]."-".$crm;
+       $crm++;}
+    // Remove excess white spaces from numbered properties
+    if(preg_match("/^(.+)-N[0-9]+$/", $t[1], $m))
+      {$selected["triples"][$k][1] = trim($m[1]);}
+
+    $objs[$t[0]] = 1;
+    }
 		
-	//
-	foreach ($selected["triples"] as $k => $t) 
-		{if(preg_match("/^(crm:E.+)$/", $t[2], $m))
-			{$selected["triples"][$k][2] = $t[2]."-".$crm;
-			 $crm++;}
-		 if(preg_match("/^(.+)-N[0-9]+$/", $t[1], $m))
-			{$selected["triples"][$k][1] = trim($m[1]);}}		//	*/
-		
-	foreach ($selected["triples"] as $k => $t) 
-		{			
-		if (count_chars($t[2]) > 60)
-			{$use = wordwrap($t[2], 60, "<br/>", true);}
-		else
-			{$use = $t[2];}
+  foreach ($selected["triples"] as $k => $t) 
+    {
+    // Format the displayed text, either wrapping or removing numbers
+    // used to indicate separate instances of the same text/name
+    if (count_chars($t[2]) > 60)
+      {$use = wordwrap($t[2], 60, "<br/>", true);}
+    else
+      {$use = $t[2];}
 			
-		if(preg_match("/^(crm[:].+)[-][0-9]+$/", $use, $m))
-			{$use = $m[1];}
-			
-		if(isset($t[3]))
-			{$fcs = explode ("@@", $t[3]);}
-		else
-			{$fcs = array(false, false);}
+    if(preg_match("/^(crm[:].+)[-][0-9]+$/", $use, $m))
+      {$use = $m[1];}
+
+    // Allow the user to force the formatting classes used for the
+    // object and subject
+    if(isset($t[3]))
+      {$fcs = explode ("@@", $t[3]);}
+    else
+      {$fcs = array(false, false);}
 								
-		if (!isset($things[$t[0]]))
-			{$things[$t[0]] = "O".$no;
-			 $defs .= Mermaid_defThing($t[0], $no, $fcs[0]);
-			 $no++;}
+    if (!isset($things[$t[0]]))
+      {$things[$t[0]] = "O".$no;
+       // Default objects to oPID class
+       if (!$fc[0] and !preg_match ("/^[a-zA-Z]+[:].+$/", $t[0], $m))
+	{$fcs[0] = "oPID";}
+       $defs .= Mermaid_defThing($t[0], $no, $fcs[0]);
+       $no++;}
 			 
-		if (!isset($things[$t[2]]))
-			{$things[$t[2]] = "O".$no;
-			 $defs .= Mermaid_defThing($t[2], $no, $fcs[1]);
-			 $no++;}		
+    if (!isset($things[$t[2]]))
+      {$things[$t[2]] = "O".$no;
+       // Default objects to oPID class
+       if (!$fc[1] and !preg_match ("/^[a-zA-Z]+[:].+$/", $t[1], $m) and isset($objs[$t[2]]))
+	{$fcs[1] = "oPID";}
+       $defs .= Mermaid_defThing($t[2], $no, $fcs[1]);
+       $no++;}		
 					 					
-		$defs .= $things[$t[0]]." -- ".$t[1]. " -->".$things[$t[2]]."[\"".$use."\"]\n";		
-		}
-	$defs .= ";</div>";
+    $defs .= $things[$t[0]]." -- ".$t[1]. " -->".$things[$t[2]].
+      "[\"".$use."\"]\n";		
+    }
+
+  $defs .= ";</div>";
 	
-	return ($defs);
-	}	
+  return ($defs);
+  }	
 
 function Mermaid_defThing ($var, $no, $fc=false)
 	{	
@@ -441,9 +360,10 @@ function Mermaid_defThing ($var, $no, $fc=false)
 
 
 function Mermaid_displayModel($defs, $title="", $parent="models.html")
-	{
-	global $d3Path;
-	ob_start();
+  {
+  global $d3Path;
+  ob_start();
+  
 echo <<<END
 
 body
@@ -500,11 +420,11 @@ g a
 }
 
 END;
-	$styles = ob_get_contents();
-	ob_end_clean(); // Don't send output to client	
+  $styles = ob_get_contents();
+  ob_end_clean(); // Don't send output to client	
 
-	ob_start();
-echo <<<END
+  ob_start();
+  echo <<<END
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
@@ -543,11 +463,12 @@ echo <<<END
     </body>
 </html>
 END;
-	$html = ob_get_contents();
-	ob_end_clean(); // Don't send output to client	
 
-	return ($html);
-	}
+  $html = ob_get_contents();
+  ob_end_clean(); // Don't send output to client	
+
+  return ($html);
+  }
 
 function D3_formatData($selected)
 	{

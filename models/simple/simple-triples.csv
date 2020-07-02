@@ -1,0 +1,15 @@
+Object	identified_by	Title
+Title	content	Famous Work
+Title	classified_as	object title
+Title	language	English
+Object	identified_by	Identifier
+Identifier	content	2020-0001
+Identifier	classified_as	accession
+Object	produced_by	Production
+Production	carried_out_by	Actor
+Production	timespan	Timespan
+Timespan	identifed_by	Timespan Name
+Timespan	begin_of_the_begin	2000-01-01T00:00:00
+Timespan	end_of_the_end	2001-01-01T00:00:00
+Timespan Name	content	2000
+Timespan Name	classified_as	display name

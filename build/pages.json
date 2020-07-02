@@ -1,45 +1,33 @@
 {
 "home": {
-	"title": "National Gallery - <b>Simple Modelling</b> Example",
-	"content": "<p>This project is based on a 'simple' copy of the [simple-site|https:\/\/github.com\/jpadfield\/simple-site] repository. It has been set up to provide a dedicated example of using the system to create and display diagrams and flowcharts, initially focused on presenting modelling examples for semantic data.<\/p>\r\n\r\n<div class=\"alert alert-info\" role=\"alert\"><h4 class=\"alert-heading\">Instructions<\/h4><p>Full details and instructions relating to how the simple-site system works can be found in the [simple-site|https:\/\/jpadfield.github.io\/simple-site\/] project webpages.<\/p><p>Four example pages have been specifically provided, to demonstrate the presentation of modelling examples using this system.</p><div class=\"row\">\r\n<div class=\"col-6 col-lg-6\" style=\"text-align:center;\">\r\n\t<a class=\"btn btn-outline-primary nav-button btn-block\" id=\"button1\" role=\"button\" href=\"Simple%20Example.html\">\r\n\tSimple Example\r\n<\/a><\/div>\r\n<div class=\"col-6 col-lg-6\" style=\"text-align:center;\">\r\n\t<a class=\"btn btn-outline-primary nav-button btn-block\" id=\"button2\" role=\"button\" href=\"Simple%20CIDOC%20Examples.html\">\r\n\tSimple CIDOC Examples\r\n<\/a><\/div>\r\n<\/div>\r\n<br\/>\r\n<div class=\"row\">\r\n<div class=\"col-6 col-lg-6\"  style=\"text-align:center;\">\r\n\t<a class=\"btn btn-outline-primary nav-button btn-block\" id=\"button3\" role=\"button\" href=\"Simple%20Linked%20Art%20Examples.html\">\r\n\tSimple Linked Art Examples\r\n<\/a><\/div>\r\n<div class=\"col-6 col-lg-6\"  style=\"text-align:center;\">\r\n\t<a class=\"btn btn-outline-primary nav-button btn-block\" id=\"button4\" role=\"button\" href=\"Complex%20Example.html\">\r\n\tComplex Example\r\n<\/a><\/div>\r\n<\/div><\/div>\r\n\r\n<h3>Acknowledgement<\/h3>\r\n<p>This specific project was prepared and tested as part of:<\/p>\r\n<h4>The SSHOC Project<\/h4>\r\n<figure class=\"figure\">\t\r\n  <img style=\"height:64px;\" src=\"graphics\/sshoc-logo.png\" class=\"figure-img img-fluid rounded\" alt=\"The SSHOC Project\">\r\n  <img style=\"height:32px;\" src=\"graphics\/sshoc-eu-tag2.png\" class=\"figure-img img-fluid rounded\" alt=\"The SSHOC Project\">\r\n  <figcaption class=\"figure-caption\">Social Sciences & Humanities Open Cloud (SSHOC)is a project funded by the EU framework programme Horizon 2020 and unites [20 partner organisations and their 27 associates|https:\/\/www.sshopencloud.eu\/partners] in developing the social sciences and humanities area of the [European Open Science Cloud (EOSC)|http:\/\/www.eosc-portal.eu\/] - [SSHOC|https:\/\/www.sshopencloud.eu\/]<\/figcaption>\r\n<\/figure><h4>The AHRC Funded [Linked Art Project|https://linked.art/] project<\/h4>\r\n<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://ahrc.ukri.org/\"><img height=\"64\" src=\"./graphics/UKRI_AHR_Council-Logo_Horiz-RGB.png\" alt=\"AHRC\" style=\"max-width:100%;\"><\/a><\/p>",
-	"content right": "<figure class=\"figure\">\r\n  <img style=\"position:relative;width:100%;\" src=\"graphics\/example_knowledge_graph.png\"\/>\r\n  <figcaption class=\"figure-caption\">An example knowledge graph created using this simple-modelling system and [d3 process map|https:\/\/github.com\/jpadfield\/d3-process-map] created by [James Nylen|https:\/\/nylen.io\/]. This image is licensed under [CC-BY-NC 4.0|https:\/\/creativecommons.org\/licenses\/by-nc\/4.0\/].\r\n  <\/figcaption>\r\n<\/figure>"
-	},
+  "title": "National Gallery - <b>Simple Modelling</b> Example",
+  "content": "<p>This project is based on a 'simple' copy of the [simple-site|https:\/\/github.com\/jpadfield\/simple-site] repository. It has been set up to provide a dedicated example of using the system to create and display diagrams and flowcharts, initially focused on presenting modelling examples for semantic data.<\/p>\r\n\r\n<div class=\"alert alert-info\" role=\"alert\"><p>Full details and instructions relating to how the simple-site system works can be found in the [simple-site|https:\/\/jpadfield.github.io\/simple-site\/] project webpages.<\/p><p>Three example pages have been specifically provided, to demonstrate the presentation of modelling examples using this system.</p><div class=\"row\">\r\n<div class=\"col-6 col-lg-6\" style=\"text-align:center;\">\r\n\t<a class=\"btn btn-outline-primary nav-button btn-block\" id=\"button1\" role=\"button\" href=\"Simple%20Example.html\">\r\n\tSimple Example\r\n<\/a><\/div>\r\n<div class=\"col-6 col-lg-6\" style=\"text-align:center;\">\r\n\t<a class=\"btn btn-outline-primary nav-button btn-block\" id=\"button2\" role=\"button\" href=\"Simple%20CIDOC%20Examples.html\">\r\n\tSimple CIDOC Examples\r\n<\/a><\/div>\r\n<\/div>\r\n<br\/>\r\n<div class=\"row\">\r\n<div class=\"col-6 col-lg-6\"  style=\"text-align:center;\">\r\n\t<a class=\"btn btn-outline-primary nav-button btn-block\" id=\"button3\" role=\"button\" href=\"Simple%20Linked%20Art%20Examples.html\">\r\n\tSimple Linked Art Examples\r\n<\/a><\/div>\r\n<\/div><\/div>\r\n\r\n<h3>Acknowledgement<\/h3>\r\n<p>This specific project was prepared and tested as part of:<\/p>\r\n<h4>The H2020 [SSHOC Project|https:\/\/www.sshopencloud.eu\/]<\/h4>\r\n<figure class=\"figure\">\t\r\n  <img style=\"height:64px;\" src=\"graphics\/sshoc-logo.png\" class=\"figure-img img-fluid rounded\" alt=\"The SSHOC Project\">\r\n  <img style=\"height:32px;\" src=\"graphics\/sshoc-eu-tag2.png\" class=\"figure-img img-fluid rounded\" alt=\"The SSHOC Project\">\r\n<\/figure><h4>The AHRC Funded [Linked Art Project|https://linked.art/] project<\/h4>\r\n<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://ahrc.ukri.org/\"><img height=\"64\" src=\"./graphics/UKRI_AHR_Council-Logo_Horiz-RGB.png\" alt=\"AHRC\" style=\"max-width:100%;\"><\/a><\/p>",
+  "content right": "<figure class=\"figure\">\r\n  <img style=\"position:relative;width:100%;\" src=\"graphics\/example_knowledge_graph.png\"\/>\r\n  <figcaption class=\"figure-caption\">An example knowledge graph created using this simple-modelling system and [d3 process map|https:\/\/github.com\/jpadfield\/d3-process-map] created by [James Nylen|https:\/\/nylen.io\/]. This image is licensed under [CC-BY-NC 4.0|https:\/\/creativecommons.org\/licenses\/by-nc\/4.0\/].\r\n  <\/figcaption>\r\n<\/figure>"
+  },
 "Instructions": {
-	"title": "How this works",
-	"content": "",
-	"content right": ""
-	},
+  "title": "Simple Site - <b>The Modelling Extension</b>",
+  "content": "TBC",
+  "content right": ""
+  },
 "Simple Example": {
-	"title": "Still todo",
+  "title": "A simple basic example",
   "class": "modelling",	
-  "file": ["all"],
-	"content": "<p>This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.</p>",
-		"displaycode": true
-		},
+  "file": ["simple"],
+  "content": "<p>This example is built on a simple tab separated list of triples, representing a simple knowledge graph. No additional controlling or formatting details are required.</p>",
+  "displaycode": true
+  },
 "Simple CIDOC Examples": {
   "title": "Objects, Production Events, Creators and Further Events",
   "class": "modelling",	
   "file": ["object", "production", "artist", "event"],
-  "content": "<p>Within this presentation, in the most generic sense an <b>object</b> is any physical or conceptual thing that needs to be discussed, examined or described. This can include complete cultural heritage objects such as paintings, sculptures, books & manuscripts, shards of pot, or even whole buildings. A specific <b>object</b> can also be a fragment, section or part of a complete cultural heritage object, such as a painting stretcher, scraps of paper, pieces of broken sculpture, and flakes of glaze/paint, or even analytical samples that have been deliberately removed. Actual museum objects, like paintings, are composed of several different sub-objects, such as paint layers, canvas, nail, etc. All of these different sub-objects can be described individually, if required.</p><p>Within this presentation, in the most generic sense a <b>creator/actor</b> is any person, groups or organisation involved with or responsible for the activities in a given event. This can include artists, authors and even conservation scientists who might take a sample from an object or carry out analytical work.</p><p><b>Further events</b> in an object’s life can cover a wide range of activities, including the commissioning of the work, its movement, any alterations or conservation treatments, additional changes of ownership, etc. Describing, in detail, the full range of these <b>further events</b> goes beyond the scope of this presentation, but the generic relationships common to most of them have been described.</p><p>Providing a full list of all the possible types of objects and creators that may be considered within conservation documentation goes well beyond the scope of this presentation. Where appropriate reference to and use of existing vocabularies xviii will be used within this work-package to define or identify these types.</p>",
-		"displaycode": true
-		},
+  "content": "<p>Within this presentation, in the most generic sense an <b>object</b> is any physical or conceptual thing that needs to be discussed, examined or described. This can include complete cultural heritage objects such as paintings, sculptures, books & manuscripts, shards of pot, or even whole buildings. A specific <b>object</b> can also be a fragment, section or part of a complete cultural heritage object, such as a painting stretcher, scraps of paper, pieces of broken sculpture, and flakes of glaze/paint, or even analytical samples that have been deliberately removed. Actual museum objects, like paintings, are composed of several different sub-objects, such as paint layers, canvas, nail, etc. All of these different sub-objects can be described individually, if required.</p><p>Within this presentation, in the most generic sense a <b>creator/actor</b> is any person, groups or organisation involved with or responsible for the activities in a given event. This can include artists, authors and even conservation scientists who might take a sample from an object or carry out analytical work.</p><p><b>Further events</b> in an object’s life can cover a wide range of activities, including the commissioning of the work, its movement, any alterations or conservation treatments, additional changes of ownership, etc. Describing, in detail, the full range of these <b>further events</b> goes beyond the scope of this presentation, but the generic relationships common to most of them have been described.</p><p>Providing a full list of all the possible types of objects and creators that may be considered within conservation documentation goes well beyond the scope of this presentation. Where appropriate reference to and use of existing vocabularies will be used within this work-package to define or identify these types.</p><div class=\"alert alert-info\" role=\"alert\"><h4 class=\"alert-heading\">Additional Formatting</h4><p>These models incorporate additional formatting in relation to the tagged namespace prefixes, such as <b>ng:</b>. In places these prefixes also indicate URL links that connect the models to the resolvable URLs which lead to webpages that further define the terms or concepts used.</p><p>Further work is required on this extension to allow these options to be editable and configurable, as they are currently hard-coded into the build process.</p></div>",
+  "displaycode": true
+  },
 "Simple Linked Art Examples": {
-	"title": "Simple Test Examples",
+  "title": "Simple Linked Art Example",
   "class": "modelling",	
-  "file": ["test"],
-	"content": "<p>This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.</p>",
-		"displaycode": true
-		},
-"Complex Example": {
-	"title": "Full knowledge graph",
-  "class": "modelling",	
-  "file": ["all"],
-	"content": "<p>This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.</p>",
-		"displaycode": true
-		},
-"about": {
-	"title": "National Gallery - CIDOC CRM Modelling Examples",
-	"content": "<p></p>",
-	"content right": ""		
-	}
+  "file": ["la1"],
+  "content": "<p>This example includes a combination of all of the other examples models provided here, showing how they connect together to form a larger knowledge network based on shared objects, people and events. This model is quite large and can be a bit harder to interpret.</p>",
+  "displaycode": true
+  }
 }

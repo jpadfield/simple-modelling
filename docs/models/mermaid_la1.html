@@ -93,10 +93,10 @@ classDef url stroke:#2C5D98,fill:white,color:#2C5D98,rx:5px,ry:5px;
 classDef note stroke:#2C5D98,fill:#D8FDFF,color:#2C5D98,rx:5px,ry:5px;
 
 O0("HMO")
-class O0 literal;
+class O0 oPID;
 
 O1("Name")
-class O1 literal;
+class O1 oPID;
 O0 -- identified_by -->O1["Name"]
 
 O2("Portret van Katherine Stieglitz")
@@ -112,7 +112,7 @@ class O4 literal;
 O1 -- language -->O4["English"]
 
 O5("Identifier")
-class O5 literal;
+class O5 oPID;
 O0 -- identified_by -->O5["Identifier"]
 
 O6("RP-F-F17653")
@@ -124,7 +124,7 @@ class O7 literal;
 O5 -- classified_as -->O7["accession"]
 
 O8("Attrib Assign")
-class O8 literal;
+class O8 oPID;
 O5 -- assigned_by -->O8["Attrib Assign"]
 
 O9("Rijks")
@@ -136,12 +136,12 @@ class O10 literal;
 O0 -- classified_as -->O10["photograph"]
 
 O11("back")
-class O11 literal;
+class O11 oPID;
 O11 -- part_of -->O0["HMO"]
 O11 -- carries -->O1["Name"]
 
 O12("Production")
-class O12 literal;
+class O12 oPID;
 O0 -- produced_by -->O12["Production"]
 
 O13("Annan")
@@ -149,16 +149,16 @@ class O13 literal;
 O12 -- carried_out_by -->O13["Annan"]
 
 O14("Visual Item")
-class O14 literal;
+class O14 oPID;
 O0 -- shows -->O14["Visual Item"]
 O14 -- content -->O1["Name"]
 
 O15("Creation")
-class O15 literal;
+class O15 oPID;
 O14 -- ???? -->O15["Creation"]
 
 O16("Timespan")
-class O16 literal;
+class O16 oPID;
 O15 -- timespan -->O16["Timespan"]
 
 O17("Stieglitz")
@@ -166,7 +166,7 @@ class O17 literal;
 O15 -- carried_out_by -->O17["Stieglitz"]
 
 O18("Name2")
-class O18 literal;
+class O18 oPID;
 O16 -- identifed_by -->O18["Name2"]
 
 O19("1905-01-01T00:00:00")
@@ -190,7 +190,7 @@ class O23 literal;
 O0 -- made_of -->O23["Paper"]
 
 O24("DimensionH")
-class O24 literal;
+class O24 oPID;
 O0 -- dimension -->O24["DimensionH"]
 
 O25("302")
@@ -206,7 +206,7 @@ class O27 literal;
 O24 -- type -->O27["height"]
 
 O28("DimensionW")
-class O28 literal;
+class O28 oPID;
 O0 -- dimension -->O28["DimensionW"]
 
 O29("210")
@@ -219,7 +219,7 @@ class O30 literal;
 O28 -- type -->O30["width"]
 
 O31("Image Part")
-class O31 literal;
+class O31 oPID;
 O31 -- part_of -->O0["HMO"]
 
 O32("DimensionX")

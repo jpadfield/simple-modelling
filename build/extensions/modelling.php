@@ -291,7 +291,7 @@ END;
     if (!isset($things[$t[0]]))
       {$things[$t[0]] = "O".$no;
        // Default objects to oPID class
-       if (!$fc[0] and !preg_match ("/^[a-zA-Z]+[:].+$/", $t[0], $m))
+       if (!$fcs[0] and !preg_match ("/^[a-zA-Z]+[:].+$/", $t[0], $m))
 	{$fcs[0] = "oPID";}
        $defs .= Mermaid_defThing($t[0], $no, $fcs[0]);
        $no++;}
@@ -299,7 +299,7 @@ END;
     if (!isset($things[$t[2]]))
       {$things[$t[2]] = "O".$no;
        // Default objects to oPID class
-       if (!$fc[1] and !preg_match ("/^[a-zA-Z]+[:].+$/", $t[1], $m) and isset($objs[$t[2]]))
+       if (!$fcs[1] and !preg_match ("/^[a-zA-Z]+[:].+$/", $t[1], $m) and isset($objs[$t[2]]))
 	{$fcs[1] = "oPID";}
        $defs .= Mermaid_defThing($t[2], $no, $fcs[1]);
        $no++;}		

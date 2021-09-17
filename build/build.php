@@ -1,5 +1,7 @@
 <?php
 
+// Last updated 22 Dec 2020
+
 // simple array "extentionClassName => newFunctionName"
 $extensionList = array();
 $html_path = "../docs/";
@@ -47,7 +49,7 @@ else
 // Variable used to add additional code at the bottom of a page -
 // the main purpose of this is to append the json code when the
 // system is used to present demo pages.
-$extraHTML = "<hr>";
+$extraHTML = "";
 	
 $pnames = array();	
 $pages = getRemoteJsonDetails("pages.json", false, true);
@@ -386,11 +388,10 @@ function writePage ($name, $d)
 	$extraHTML = "";
 	$footnotes = array();	
 	$pd = $gdp;
+	$pd["page"] = "${use}.html";
     
 	if ($name == "home") {$use= "index";}
 	else {$use = $name;}
-
-  $pd["page"] = "${use}.html";
 		
 	if ($d["parent"])
 		{$pd["topNavbar"] = buildTopNav ($d["bcs"][0]);
